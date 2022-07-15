@@ -43,6 +43,8 @@ OLDIFS=$IFS
 IFS=$'\n'
 rules=($(cat $rules))
 echo -n > $tmpmap
+echo "|#1       |#2       |#3       |#4       |#5       |#6       |#7       |#8       |#9       |#10      |" >> $tmpmap
+echo "|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|" >> $tmpmap
 
 i=0
 echo -n "|" >> $tmpmap
@@ -64,7 +66,7 @@ for m in "${mappings[@]}"; do
     fi
     if [ "$char" == "PIPE" ]; then
         char="|"
-        char1="|"
+        char1="\|"
     fi
     if [ "$char" == "&" ]; then
         char="\&"
@@ -81,13 +83,12 @@ for m in "${mappings[@]}"; do
     
 done
 
-sed -i bk 's/^/|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|\n/g' $tmpmap
-echo >> $tmpmap
-echo "|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|" >> $tmpmap
-
-sed -i .bk -e "s/__KEYBOARD__/${language^} - ${keyboard^^} Keyboard/g" -e "/## Layout/r $tmpmap" -e "/## Mapping/r $tmprules" $readme
+# build readme
+sed -i .bk -e "s/__KEYBOARD__/${language^} - ${keyboard^^} Keyboard/g" -e "/__LAYOUT__/r $tmpmap" -e "/__MAPPING__/r $tmprules" $readme
 # clean up readme 
 sed -i .bk -e 's/^-/\\-/g' -e 's/^+/\\+/g' -e 's/^# /\\# /g' -e 's/^*/\\*/g' -e 's/`/\\`/g' -e 's/^>/\\>/g' $readme
+sed -i .bk -e '/__LAYOUT__/d' -e '/__MAPPING__/d' $readme
+sed -i .bk -e 's/<BACKTICK>/`/g' $readme
 rm ${readme}.bk
 
 echo "$script: readme file saved at $readme"
