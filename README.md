@@ -3,6 +3,12 @@ Custom keyboard layout/mapping for Gujarati, Hindi and English diacritic.
 
 Uses AHK hotkeys to remap and link keys.
 
+## Latest Versions
+
+# Hindi - 1.1b
+# English - 1.1b
+# Gujarati - 1.2b
+
 ## Supported Keyboards & Linking
 
 # Hindi

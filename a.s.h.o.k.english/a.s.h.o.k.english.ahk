@@ -1,9 +1,14 @@
 /*
 Name ..........: a.s.h.o.k.english
 Description ...: Custom English Keyboard Key Mapping
-Version .......: v1.1b (beta)
-Modified ......: 2022.07.10
-Author ........: Ankit Jain (<ajatkj@yahoo.co.in>)
+Version .......: v1.2b (beta)
+Modified ......: 2024.07.19
+Author ........: Ankit Jain (<ajatkj.dev@gmail.com>)
+*/
+
+/*
+Changelog
+19.07.2024: Add flexi sign & illustrator to list of programs
 */
 
 /* 
@@ -636,6 +641,8 @@ MS Word
 MS Excel
 MS Powerpoint
 Fontographer
+Flexi Sign Pro
+Illustrator
 */
 GetAHKClassFromConfig() {
     UserProfile := EnvGet("USERPROFILE")
@@ -653,6 +660,6 @@ GetAHKClassFromConfig() {
 ;Create AHK Class config file if one does not exist with default programs
 WriteAHKClassConfig(ConfigFile) {
     ;New line separated string with AHK Class names
-    DefaultAHKClasses := "; Pagemaker`nVWClass500`n; CorelDraw`nCorelDRAW`n; MS Word`nOpusApp`n; MS Excel`nXLMAIN`n; MS Powerpoint`nPPTFrameClass`n; Fontographer`nfogframe"
+    DefaultAHKClasses := "; Pagemaker`nVWClass500`n; CorelDraw`nCorelDRAW`n; MS Word`nOpusApp`n; MS Excel`nXLMAIN`n; MS Powerpoint`nPPTFrameClass`n; Fontographer`nfogframe`n; Flexi Sign`nFlexiSIGN-PRO`n; Illustrator`nillustrator"
     IniWrite(DefaultAHKClasses, ConfigFile, "AHK_CLASS")
 }

@@ -1,9 +1,16 @@
 ﻿/*
 Name ..........: a.s.h.o.k.gujarati
 Description ...: Custom Gujarati Keyboard Key Mapping
-Version .......: v1.1b (beta)
-Modified ......: 2022.07.10
-Author ........: Ankit Jain (<ajatkj@yahoo.co.in>)
+Version .......: v1.2b (beta)
+Modified ......: 2024.07.19
+Author ........: Ankit Jain (<ajatkj.dev@gmail.com>)
+*/
+
+/*
+Changelog:
+06.03.2023: Removed mappings
+19.07.2024: Made some changes related to 236, 238, 119 keys
+            Add illustrator
 */
 
 /*
@@ -73,7 +80,7 @@ Linking for Gujarati Keyboard
 <101> + <151> + <101> + <238> => <102> + <239>
 <101> + <151> + <101> => <102>
 <101> + <151> + <174> => <101> + <176>
-<101> + <236> => <101> + <237>
+<101> + <236> => <101> + <237> // 06.03.2023 - This link is incorrect, removed
 <101> + <238> => <101> + <239>
 <103> + <151> + <103> => <104>
 <103> + <151> + <106> + <236> => <105> + <237>
@@ -139,10 +146,10 @@ Linking for Gujarati Keyboard
 <140> + <151> => <139>
 <140> + <236> => <139> + <227>
 <140> + <238> => <139> + <228>
-<140> + <146> + <236> => <145> + <227>
-<140> + <151> + <140> + <236> => <145> + <227>
-<140> + <146> + <238> => <145> + <228>
-<140> + <151> + <140> + <238> => <145> + <228>
+<140> + <146> + <236> => <145> + <227> // 19.07.2024 - removed this binding, replaced with generic
+<140> + <151> + <140> + <236> => <145> + <227> // 19.07.2024 - removed this binding, replaced with generic
+<140> + <146> + <238> => <145> + <228> // 19.07.2024 - removed this binding, replaced with generic
+<140> + <151> + <140> + <238> => <145> + <228> // 19.07.2024 - removed this binding, replaced with generic
 <146> + <151> => <157>
 <111> + <119> => <110> + <183>
 <111> + <151> + <111> => <220> + <231>
@@ -159,6 +166,9 @@ Linking for Gujarati Keyboard
 <156> + <236> => <155> + <227>
 <156> + <238> => <155> + <228>
 <156> + <151> => <222>
+<159> + <236> => <222> + <227> // 19.07.2024: new binding
+<159> + <238> => <222> + <228> // 19.07.2024: new binding
+<159> + <119> => <222> + <183> // 19.07.2024: new binding
 <162> + <151> => <161>
 <162> + <192> + <236> => <255> + <237>
 <162> + <192> => <255>
@@ -224,6 +234,9 @@ Linking for Gujarati Keyboard
 <210> + <151> + <194> => <218>
 <210> + <151> + <196> => <219>
 <210> + <192> => <217>
+<231> + <236> => <227> ==> 19.07.2024 - replaced specific with this generic binding
+<231> + <238> => <228> ==> 19.07.2024 - replaced specific with this generic binding
+<231> + <119> => <183> ==> 19.07.2024 - added new binding
 <236> + <151> => <237>
 <238> + <151> => <239>
 <124> + <151> => <209>
@@ -237,7 +250,7 @@ Linking for Gujarati Keyboard
 
 ;To generate executable for different keyboard, use different include file
 
-#Include resources/typewriter/keyboard/a.s.h.o.k.gujarati.typewriter.ahk
+#Include resources/doe/keyboard/a.s.h.o.k.gujarati.doe.ahk
 
 ;Modify tray menu
 
@@ -913,6 +926,12 @@ Func119(*)
             SendEvent("{BackSpace}")
             SendText(V_155)
             SendText(V_183)
+        ;19.07.2024: added new binding
+        ;Keyboard shortcut: <159> + <119> => <222> + <183>
+        } Else If  (V_2 == V_159) {
+            SendEvent("{BackSpace}")
+            SendText(V_222)
+            SendText(V_183)
         ;Keyboard shortcut: <164> + <119> => <163> + <183>
         } Else If  (V_2 == V_164) {
             SendEvent("{BackSpace}")
@@ -966,6 +985,11 @@ Func119(*)
         } Else If  (V_2 == V_224) {
             SendEvent("{BackSpace}")
             SendText(V_224)
+            SendText(V_183)
+        ;19.07.2024
+        ;Keyboard shortcut: <231> + <119> => <183>
+        } Else If  (V_2 == V_231) {
+            SendEvent("{BackSpace}")
             SendText(V_183)
         ;Keyboard shortcut: <111> + <192> + <119> => <224> + <183>
         } Else If  (V_2 == V_148) {
@@ -1681,11 +1705,12 @@ Func236(*)
         SendEvent("{BackSpace}")
         SendText(V_100)
         SendText(V_237)
+    ; 06.03.2023 - Remove this incorrect link, not required
     ;Keyboard shortcut: <101> + <236> => <101> + <237>
-    } Else If  (V_2 == V_101) {
-        SendEvent("{BackSpace}")
-        SendText(V_101)
-        SendText(V_237)
+    ; } Else If  (V_2 == V_101) {
+    ;    SendEvent("{BackSpace}")
+    ;    SendText(V_101)
+    ;    SendText(V_237)
     ;Keyboard shortcut: <101> + <151> + <101> + <236> => <102> + <237>
     } Else If  (V_2 == V_102) {
         SendEvent("{BackSpace}")
@@ -1745,6 +1770,12 @@ Func236(*)
     } Else If  (V_2 == V_156) {
         SendEvent("{BackSpace}")
         SendText(V_155)
+        SendText(V_227)
+    ;19.07.2024: added new binding
+    ;Keyboard shortcut: <159> + <236> => <222> + <227>
+    } Else If  (V_2 == V_159) {
+        SendEvent("{BackSpace}")
+        SendText(V_222)
         SendText(V_227)
     ;Keyboard shortcut: <162> + <236> => <162> + <237>
     } Else If  (V_2 == V_162) {
@@ -1810,14 +1841,11 @@ Func236(*)
         SendEvent("{BackSpace}")
         SendText(V_224)
         SendText(V_227)
-    ;Keyboard shortcut: <140> + <146> + <236> => <145> + <227>
-    ;Keyboard shortcut: <140> + <Link> + <140> + <236> => <145> + <227>
+    ;19.07.2024: changed below shortcut
+    ;Keyboard shortcut: <231> + <236> => <227>
     } Else If  (V_2 == V_231) {
-        V_3 := FetchPreviousChar(2)
-        If (V_3 == V_145) {
-            SendEvent("{BackSpace}")
-            SendText(V_227)
-        }
+        SendEvent("{BackSpace}")
+        SendText(V_227)
     ;Keyboard shortcut: <116> + <151> + <116> + <236> => <241> + <237>
     } Else If  (V_2 == V_241) {
         SendEvent("{BackSpace}")
@@ -1930,6 +1958,12 @@ Func238(*)
         SendEvent("{BackSpace}")
         SendText(V_155)
         SendText(V_228)
+    ;19.07.2024: added new binding
+    ;Keyboard shortcut: <159> + <238> => <222> + <228>
+    } Else If  (V_2 == V_159) {
+        SendEvent("{BackSpace}")
+        SendText(V_222)
+        SendText(V_228)
     ;Keyboard shortcut: <162> + <238> => <162> + <239>
     } Else If  (V_2 == V_162) {
         SendEvent("{BackSpace}")
@@ -1994,14 +2028,11 @@ Func238(*)
         SendEvent("{BackSpace}")
         SendText(V_224)
         SendText(V_228)
-    ;Keyboard shortcut: <140> + <146> + <238> => <145> + <228>
-    ;Keyboard shortcut: <140> + <151> + <140> + <238> => <145> + <228>
+    ;19.07.2024: changed below shortcut
+    ;Keyboard shortcut: <231> + <238> => <228>
     } Else If  (V_2 == V_231) {
-        V_3 := FetchPreviousChar(2)
-        If (V_3 == V_145) {
-            SendEvent("{BackSpace}")
-            SendText(V_228)
-        }
+        SendEvent("{BackSpace}")
+        SendText(V_228)
     ;Keyboard shortcut: <116> + <151> + <116> + <238> => <241> + <239>
     } Else If  (V_2 == V_241) {
         SendEvent("{BackSpace}")
@@ -2302,6 +2333,8 @@ MS Word
 MS Excel
 MS Powerpoint
 Fontographer
+Flexi Sign Pro
+Illustrator
 */
 GetAHKClassFromConfig() {
     UserProfile := EnvGet("USERPROFILE")
@@ -2319,6 +2352,6 @@ GetAHKClassFromConfig() {
 ;Create AHK Class config file if one does not exist with default programs
 WriteAHKClassConfig(ConfigFile) {
     ;New line separated string with AHK Class names
-    DefaultAHKClasses := "; Pagemaker`nVWClass500`n; CorelDraw`nCorelDRAW`n; MS Word`nOpusApp`n; MS Excel`nXLMAIN`n; MS Powerpoint`nPPTFrameClass`n; Fontographer`nfogframe"
+    DefaultAHKClasses := "; Pagemaker`nVWClass500`n; CorelDraw`nCorelDRAW`n; MS Word`nOpusApp`n; MS Excel`nXLMAIN`n; MS Powerpoint`nPPTFrameClass`n; Fontographer`nfogframe`n; Flexi Sign`nFlexiSIGN-PRO`n; Illustrator`nillustrator"
     IniWrite(DefaultAHKClasses, ConfigFile, "AHK_CLASS")
 }
