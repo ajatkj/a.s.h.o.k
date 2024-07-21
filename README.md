@@ -5,8 +5,8 @@ Uses AHK hotkeys to remap and link keys.
 
 ## Latest Versions
 
-# Hindi - 1.1b
-# English - 1.1b
+# Hindi - 1.2b
+# English - 1.2b
 # Gujarati - 1.2b
 
 ## Supported Keyboards & Linking
